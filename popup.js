@@ -1,5 +1,6 @@
 
 const signIn = document.getElementById("sign-in");
+const connectBtn = document.getElementById("connect-btn");
 const dashboard = document.getElementById("dashboard")
 
 async function checkFitbitConnection() {
@@ -11,5 +12,12 @@ async function checkFitbitConnection() {
         dashboard.style.display = "none";
     }
 }
+
+async function connectToFitbit() {
+    console.log("connect button clicked!")
+    const response = await chrome.runtime.sendMessage({ action: 'connectFitbit' });
+}
+
+connectBtn.addEventListener("click", connectToFitbit);
 
 checkFitbitConnection()

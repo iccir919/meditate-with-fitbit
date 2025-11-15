@@ -14,5 +14,12 @@
     "permissions": [
         "storage",       
         "identity"       
+    ],
+    "background": {
+        "service_worker": "service-worker.js"
+    },
+    "host_permissions": [
+        "https://api.fitbit.com/*"
     ]
+
 }
