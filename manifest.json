@@ -1,0 +1,18 @@
+{
+    "manifest_version": 3,
+    "name": "Meditate with Fitbit",
+    "version": "1.0",
+    "description": "An extension to conduct meditation sessions that are recorded as an activity with your Fitbit account.",
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "icons": {
+        "16": "assets/icons/logo-16.png",
+        "48": "assets/icons/logo-48.png",
+        "128": "assets/icons/logo-128.png"
+    },
+    "permissions": [
+        "storage",       
+        "identity"       
+    ]
+}
