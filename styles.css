@@ -1,10 +1,120 @@
-.wrapper {
-    width: 400px;
-    padding: 15px;
-    font-family: sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
 }
 
-#sign-in, #dashboard {
-    display: none;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f6f9fc;
+    color: #333;
+    width: 350px;
+    padding: 1em;
+}
+
+.wrapper {
+    margin: 1em;
+    display: flex;
     flex-direction: column;
+    gap: 1em;
+}
+
+
+/* Headings */
+h1, h2 {
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Sign-in section */
+#sign-in {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#connectBtn {
+    margin-top: 1.15em;
+    background: #00b0b9;
+    color: #fff;
+    border: none;
+    padding: 0.75em 1.25em;
+    font-size: 1.25em;
+    border-radius: .5em;
+    cursor: pointer;
+    transition: background 0.25s ease;
+}
+
+#connectBtn:hover {
+    background: #0097a1;
+}
+
+
+/* Dashboard */
+#dashboard {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#logoutBtn {
+    background: #00b0b9;
+    border: none;
+    color: white;
+    padding: 0.5em 0.75em;
+    border-radius: .5em;
+    cursor: pointer;
+    font-size: 0.95em;
+}
+
+#logoutBtn:hover {
+    background: #0097a1;
+}
+
+/* Session controls */
+.session-controls {
+    display: flex;
+    justify-content: center;
+    gap: 0.75em;
+    margin-top: 1em;
+}
+
+.session-controls button {
+    padding: 0.5em 0.75em;
+    border: none;
+    border-radius: 0.5em;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.25s ease;
+}
+
+#start-button {
+    background: #4caf50;
+    color: white;
+}
+
+#start-button:hover {
+    background: #449d48;
+}
+
+#end-button {
+    background: #d9534f;
+    color: white;
+}
+
+#end-button:hover {
+    background: #c64946;
+}
+
+#status {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 0.75em;
 }
