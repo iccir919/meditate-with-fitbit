@@ -28,12 +28,12 @@ h1, h2 {
 
 /* Sign-in section */
 #sign-in {
-    display: flex;
+    display: none;
     flex-direction: column;
     text-align: center;
 }
 
-#connectBtn {
+#connect-btn {
     margin-top: 1.15em;
     background: #00b0b9;
     color: #fff;
@@ -52,7 +52,7 @@ h1, h2 {
 
 /* Dashboard */
 #dashboard {
-    display: flex;
+    display: none;
     flex-direction: column;
 }
 
@@ -63,7 +63,7 @@ header {
     align-items: center;
 }
 
-#logoutBtn {
+#logout-btn {
     background: #00b0b9;
     border: none;
     color: white;
@@ -73,7 +73,7 @@ header {
     font-size: 0.95em;
 }
 
-#logoutBtn:hover {
+#logout-btn:hover {
     background: #0097a1;
 }
 
@@ -94,21 +94,21 @@ header {
     transition: background 0.25s ease;
 }
 
-#start-button {
+#start-btn {
     background: #4caf50;
     color: white;
 }
 
-#start-button:hover {
+#start-btn:hover {
     background: #449d48;
 }
 
-#end-button {
+#end-btn {
     background: #d9534f;
     color: white;
 }
 
-#end-button:hover {
+#end-btn:hover {
     background: #c64946;
 }
 
