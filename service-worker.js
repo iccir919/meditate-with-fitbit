@@ -3,14 +3,48 @@ const START_TIME_KEY = "meditationStartTime";
 
 const FITBIT_AUTH_URL = 'https://www.fitbit.com/oauth2/authorize';
 const SCOPES = "activity heartrate";
+const MEDITATION_ACTIVITY_ID = 7075;
 
 const CLIENT_ID = "23TQ8L";
 const REDIRECT_URL = chrome.identity.getRedirectURL();
 
 // --- API Function: Log Activity ---
 async function logActivity(accessToken, startTime, durationMinutes) {
-    console.log("End")
-    return {}
+    const date = new Date(startTime).toISOString().split('T')[0]; 
+    const durationMillis = durationMinutes * 60 * 1000;
+    const startTimeFormatted = new Date(startTime).toLocaleTimeString('en-US', { hour12: false });
+
+    const url = 'https://api.fitbit.com/1/user/-/activities.json';
+    try {
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${accessToken}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                activityId: MEDITATION_ACTIVITY_ID,
+                startTime: startTimeFormatted,
+                durationMillis: durationMillis,
+                date: date
+            })
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error(`Fitbit API error: ${response.status} - ${errorText}`);
+            return { success: false, message: `Fitbit logging failed: ${response.status}` };
+        }
+
+        const data = await response.json();
+        console.log("Activity successfully logged to Fitbit:", data);
+        return { success: true, message: "Logged to Fitbit" }
+
+
+    } catch(error) {
+        console.error("Error logging activity", error);
+        return { success: false, message: `Network Error: ${error.message}` }
+    }
 }
 
 
@@ -117,8 +151,13 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                 chrome.storage.local.remove(START_TIME_KEY, () => {
                     sendResponse(logResult)
                 });
+            } else {
+                console.error("Cannot end session: Missing start time or access token");
+                chrome.storage.local.remove(START_TIME_KEY);
+                sendResponse( { success: false, message: "Session data missing. Did you mean to start a session?" })
             }
         });
+        return true;
     }
 
 })

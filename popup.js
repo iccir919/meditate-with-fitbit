@@ -75,7 +75,7 @@ endBtn.addEventListener("click", () => {
         if (response && response.success) {
             statusDiv.textContent = "Session logged successfully!" 
         } else {
-            statusDiv.textContent = response.message || "Logging failed. Check console."
+            statusDiv.textContent = response?.message || "Logging failed. Check console."
         }
         checkFitbitConnection();
     });
